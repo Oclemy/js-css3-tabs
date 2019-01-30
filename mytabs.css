@@ -1,0 +1,93 @@
+/* @import allows us import a stylesheet from a url */
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: 'Ubuntu', sans-serif;
+  background: #00796B;
+  padding-top: 40px;
+}
+#horizontal-tabs{
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+}
+.tabs{
+  /* display  determines the type of box or boxes that are generated for an element. */
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  background-color: #FF5733;
+  color: #fff;
+  font-weight: 400;
+  border-radius: 3px;
+  width: content-box;
+  position: relative;
+
+}
+.tab{
+  display: block;
+  padding: 11px 20px;
+  position: relative;
+  /* 'z-index' property specifies the stack level of the box in the current stacking context  */
+  z-index: 99999;
+
+}
+.tab:hover{
+  /* cursor allows control over cursor appearance in an element */
+  cursor: pointer;
+}
+
+.selector{
+  display:inline-block;
+  position: absolute;
+  left:0;
+  top:0;
+  height: 40px;
+  z-index:99999;
+  border-radius:7px;
+  transition: all 500ms cubic-bezier(0.080, -0.195, 0.140, 0.970);
+  background: #FF9800;
+}
+
+.selector:after{
+  content:'';
+  position: absolute;
+  z-index: -1;
+  left: calc(50% - 10px);
+  bottom: -10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: #FF9800 transparent transparent transparent;
+}
+.tab-content .tab-item-content{
+  background: #ffffff;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: none;
+}
+
+.tab-content .tab-item-content.active{
+  padding: 20px;
+  height: 300px;
+  display: block;
+}
+
+li.tab .hidden-tab-name{
+  font-size: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+li.tab.active-item .hidden-tab-name{
+  display: inline;
+  visibility: visible;
+  opacity: 1; /*where 1 is opaque and 0 is entirely transparent. */
+  font-size: inherit;
+}
